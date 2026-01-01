@@ -2,7 +2,9 @@
 export { useColorScheme } from './use-color-scheme';
 export { useThemeColor } from './use-theme-color';
 
-// Business hooks (to be implemented)
-// export { useAuth } from './useAuth';
-// export { useTasks } from './useTasks';
-// export { useStorage } from './useStorage';
+// Business hooks
+export * from './useAuth';
+
+// Future hooks can be added here
+// export * from './useTasks';
+// export * from './useStorage';
