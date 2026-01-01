@@ -2,9 +2,32 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "noUncheckedIndexedAccess": true, //pour une vérification plus stricte des accès aux tableaux et objets
+    "noImplicitReturns": true, //pour s'assurer que toutes les fonctions retournent une valeur
+    "noFallthroughCasesInSwitch": true, //pour éviter les cas de chute dans les instructions switch
+    "noUncheckedSideEffectImports": true, //pour éviter les importations avec des effets secondaires non vérifiés
+    "exactOptionalPropertyTypes": true, //pour une gestion plus stricte des propriétés optionnelles
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@/components/*": [ //alias pour le dossier des composants
+        "./src/components/*"
+      ],
+      "@/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
+      ],
+      "@/store/*": [
+        "./src/store/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
       ]
     }
   },
@@ -12,6 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "src/**/*"
   ]
 }
