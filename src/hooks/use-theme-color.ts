@@ -3,12 +3,32 @@
  * https://docs.expo.dev/guides/color-schemes/
  */
 
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Colors } from '@/src/utils/designSystem';
+import { useColorScheme } from '@/src/hooks/use-color-scheme';
+
+// Map theme colors to our design system
+const themeColors = {
+  light: {
+    text: Colors.text,
+    background: Colors.background,
+    tint: Colors.primary,
+    icon: Colors.textSecondary,
+    tabIconDefault: Colors.textMuted,
+    tabIconSelected: Colors.primary,
+  },
+  dark: {
+    text: Colors.textLight,
+    background: Colors.text,
+    tint: Colors.primary,
+    icon: Colors.textMuted,
+    tabIconDefault: Colors.textSecondary,
+    tabIconSelected: Colors.primary,
+  },
+};
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
-  colorName: keyof typeof Colors.light & keyof typeof Colors.dark
+  colorName: keyof typeof themeColors.light
 ) {
   const theme = useColorScheme() ?? 'light';
   const colorFromProps = props[theme];
@@ -16,6 +36,6 @@ export function useThemeColor(
   if (colorFromProps) {
     return colorFromProps;
   } else {
-    return Colors[theme][colorName];
+    return themeColors[theme][colorName];
   }
 }
