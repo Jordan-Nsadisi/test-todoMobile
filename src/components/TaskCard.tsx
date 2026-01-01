@@ -82,7 +82,7 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
          padding="lg"
          margin="sm"
       >
-         {/* Header with title and status */}
+         {/* header avec titre et staus */}
          <View style={styles.header}>
             <Text style={styles.title} numberOfLines={2}>
                {task.title}
@@ -92,14 +92,14 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
             </Badge>
          </View>
 
-         {/* Description */}
+         {/* description */}
          {task.description && (
             <Text style={styles.description} numberOfLines={3}>
                {truncateText(task.description)}
             </Text>
          )}
 
-         {/* Dates */}
+         {/* dates */}
          <View style={styles.dates}>
             <Text style={styles.dateText}>
                Créé le {formatDate(task.createdAt)}
@@ -111,7 +111,7 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
             )}
          </View>
 
-         {/* Actions */}
+         {/* actions */}
          <View style={styles.actions}>
             <View style={styles.statusActions}>
                {task.status !== 'COMPLETED' && (
@@ -150,7 +150,7 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
                   style={[styles.actionButton, styles.editButton]}
                   onPress={() => onEdit(task)}
                >
-                  <Text style={styles.editButtonText}>✎ Modifier</Text>
+                  <Text style={styles.editButtonText}>Modifier</Text>
                </TouchableOpacity>
 
                <TouchableOpacity
@@ -158,7 +158,7 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
                   onPress={handleDelete}
                   disabled={deleteTaskMutation.isPending}
                >
-                  <Text style={styles.deleteButtonText}>🗑 Supprimer</Text>
+                  <Text style={styles.deleteButtonText}>Supprimer</Text>
                </TouchableOpacity>
             </View>
          </View>
