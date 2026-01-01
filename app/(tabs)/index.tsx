@@ -1,11 +1,42 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
+import { View, StyleSheet } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+
+export default function DashboardScreen() {
+  return (
+    <ThemedView style={styles.container}>
+      <ThemedView style={styles.header}>
+        <ThemedText type="title">Mes Tâches</ThemedText>
+      </ThemedView>
+      
+      <View style={styles.content}>
+        <ThemedText type="subtitle">Dashboard en construction...</ThemedText>
+        <ThemedText>
+          Cette page affichera la liste des tâches une fois l'authentification implémentée.
+        </ThemedText>
+      </View>
+    </ThemedView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    padding: 20,
+    paddingTop: 60,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
+  },
+  content: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 16,
+  },
+});
 
 export default function HomeScreen() {
   return (
