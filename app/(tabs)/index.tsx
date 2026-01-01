@@ -1,6 +1,6 @@
-import { View, StyleSheet } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, View } from 'react-native';
 
 export default function DashboardScreen() {
   return (
@@ -8,7 +8,7 @@ export default function DashboardScreen() {
       <ThemedView style={styles.header}>
         <ThemedText type="title">Mes Tâches</ThemedText>
       </ThemedView>
-      
+
       <View style={styles.content}>
         <ThemedText type="subtitle">Dashboard en construction...</ThemedText>
         <ThemedText>
