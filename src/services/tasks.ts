@@ -5,8 +5,8 @@ import { API_ENDPOINTS } from '../utils/endpoint';
 // Task API service functions
 export const taskService = {
 
-   async getTasks(): Promise<Task[]> {
-      const response = await apiClient.get<{ tasks: Task[] }>(API_ENDPOINTS.tasks.getAll);
+   async getTasks(userId: number): Promise<Task[]> {
+      const response = await apiClient.get<{ tasks: Task[] }>(`${API_ENDPOINTS.tasks.getByUser}${userId}`);
       return response.data.tasks;
    },
 
