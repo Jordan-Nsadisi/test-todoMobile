@@ -1,10 +1,10 @@
-// UI Design System exports
+// UI design system
 export { Collapsible } from './collapsible';
 export { IconSymbol } from './icon-symbol';
 
-// Core UI components (to be implemented)
-// export { Button } from './Button';
-// export { Input } from './Input';
-// export { Card } from './Card';
-// export { Modal } from './Modal';
-// export { Badge } from './Badge';
+// core UI components
+export { Badge } from './Badge';
+export { Button } from './Button';
+export { Card } from './Card';
+export { Input } from './Input';
+export { Modal } from './Modal';
