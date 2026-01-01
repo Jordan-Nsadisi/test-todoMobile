@@ -1,5 +1,6 @@
 // Utility exports
+export * from './designSystem';
 // export { API_ENDPOINTS } from './constants';
 // export { globalStyles } from './styles';
 
-// Placeholder - utils will be implemented in next phases
+// Future utils can be added here
