@@ -4,11 +4,21 @@ import { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 export default function LandingScreen() {
-   const { isAuthenticated, _hasHydrated } = useAuthStore();
+   const { isAuthenticated, _hasHydrated, setHasHydrated } = useAuthStore();
 
    useEffect(() => {
-      // Any initialization logic can be added here
-   }, []);
+      console.log('LandingScreen - hasHydrated:', _hasHydrated, 'isAuthenticated:', isAuthenticated);
+
+      // Fallback: forcer l'hydratation après 3 secondes si elle n'a pas eu lieu
+      const timeout = setTimeout(() => {
+         if (!_hasHydrated) {
+            console.log('Forcing hydration after timeout');
+            setHasHydrated();
+         }
+      }, 3000);
+
+      return () => clearTimeout(timeout);
+   }, [_hasHydrated, setHasHydrated, isAuthenticated]);
 
    // Show loading while hydrating from AsyncStorage
    if (!_hasHydrated) {
