@@ -1,23 +1,16 @@
+import { useAuthStore } from '@/src/store';
 import { Redirect } from 'expo-router';
 import { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
-// TODO: Import auth store when implemented
-// import { useAuthStore } from '@/store';
-
 export default function LandingScreen() {
-   // TODO: Add auth state management
-   // const { isAuthenticated, _hasHydrated } = useAuthStore();
-
-   // Temporary - will be replaced with real auth logic
-   const isAuthenticated = false;
-   const _hasHydrated = true;
+   const { isAuthenticated, _hasHydrated } = useAuthStore();
 
    useEffect(() => {
-      // TODO: Add any initialization logic here
+      // Any initialization logic can be added here
    }, []);
 
-   // Show loading while hydrating
+   // Show loading while hydrating from AsyncStorage
    if (!_hasHydrated) {
       return (
          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
