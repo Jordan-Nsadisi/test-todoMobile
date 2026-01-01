@@ -19,7 +19,11 @@ export const authService = {
    },
 
    async register(userData: RegisterFormData): Promise<AuthResponse> {
-      const { confirmPassword, ...registerData } = userData;
+      const { confirmPassword, ...otherData } = userData;
+      const registerData = {
+         ...otherData,
+         password_confirmation: confirmPassword,
+      };
 
       const response = await apiClient.post<AuthResponse>(
          API_ENDPOINTS.auth.register,
@@ -37,7 +41,7 @@ export const authService = {
       return response.data;
    },
 
- //pour rafraichir le token au besoin de l'authentification
+   //pour rafraichir le token au besoin de l'authentification
    async refreshToken(): Promise<AuthResponse> {
       const response = await apiClient.post<AuthResponse>('/auth/refresh');
       return response.data;
