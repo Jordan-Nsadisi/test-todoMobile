@@ -1,6 +1,6 @@
 // API services exports
-// export { apiClient } from './api';
+export { queryClient, queryKeys } from './queryClient';
 // export * from './auth';
 // export * from './tasks';
 
-// Placeholder - services will be implemented in next phases
+// Placeholder - API services will be implemented in next phases
