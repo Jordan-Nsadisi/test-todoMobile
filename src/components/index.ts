@@ -6,7 +6,6 @@ export { default as ParallaxScrollView } from './parallax-scroll-view';
 export { ThemedText } from './themed-text';
 export { ThemedView } from './themed-view';
 
-// Business components (to be added later)
-// export { TaskCard } from './TaskCard';
-// export { TaskModal } from './TaskModal';
-// export { LoadingSpinner } from './LoadingSpinner';
+// Business components
+export { TaskCard } from './TaskCard';
+export { TaskModal } from './TaskModal';
