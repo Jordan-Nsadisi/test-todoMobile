@@ -10,7 +10,6 @@ export interface User {
    updatedAt: string;
 }
 
-// Task types (to be implemented)
 export type TaskStatus = 'PENDING' | 'COMPLETED' | 'CANCELED';
 
 export interface Task {
@@ -23,7 +22,6 @@ export interface Task {
    updatedAt: string;
 }
 
-// API Response types (to be implemented)
 export interface AuthResponse {
    access_token: string;
    user: User;
@@ -33,7 +31,6 @@ export interface TasksResponse {
    tasks: Task[];
 }
 
-// Form types (to be implemented)
 export interface LoginFormData {
    email: string;
    password: string;
