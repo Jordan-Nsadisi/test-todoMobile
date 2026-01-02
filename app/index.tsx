@@ -1,7 +1,8 @@
 import { useAuthStore } from '@/src/store';
+import { Colors, Typography } from '@/src/utils/designSystem';
 import { Redirect } from 'expo-router';
 import { useEffect } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 export default function LandingScreen() {
    const { isAuthenticated, _hasHydrated, setHasHydrated } = useAuthStore();
@@ -9,30 +10,48 @@ export default function LandingScreen() {
    useEffect(() => {
       console.log('LandingScreen - hasHydrated:', _hasHydrated, 'isAuthenticated:', isAuthenticated);
 
-      // Fallback: forcer l'hydratation après 3 secondes si elle n'a pas eu lieu
+      // Fallback d'hydratation plus rapide
       const timeout = setTimeout(() => {
          if (!_hasHydrated) {
-            console.log('Forcing hydration after timeout');
+            // console.log('force hydratation après timeout');
             setHasHydrated();
          }
-      }, 3000);
+      }, 1500);
 
       return () => clearTimeout(timeout);
-   }, [_hasHydrated, setHasHydrated, isAuthenticated]);
+   }, [_hasHydrated, setHasHydrated]);
 
-   // Show loading while hydrating from AsyncStorage
+   //ecran de chargement
    if (!_hasHydrated) {
       return (
-         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <ActivityIndicator size="large" color="#3B82F6" />
+         <View style={styles.container}>
+            <ActivityIndicator size="large" color={Colors.primary} />
+            <Text style={styles.loadingText}>Chargement...</Text>
          </View>
       );
    }
 
-   // Redirect based on auth status
+   // Redirection intelligente selon l'état d'auth
    if (isAuthenticated) {
-      return <Redirect href="/(tabs)/dashboard" />;
+      // console.log('user authentifier, redirection au dashbord');
+      return <Redirect href="/(tabs)" />;
    }
 
+   // console.log('user non authentifier, redirection au login');
    return <Redirect href="/(auth)/login" />;
 }
+
+const styles = StyleSheet.create({
+   container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: Colors.background,
+      gap: 16,
+   },
+   loadingText: {
+      fontSize: Typography.fontSize.base,
+      color: Colors.textSecondary,
+      fontWeight: Typography.fontWeight.medium,
+   },
+});
