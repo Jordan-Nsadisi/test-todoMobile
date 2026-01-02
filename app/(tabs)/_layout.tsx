@@ -48,7 +48,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
-          href: null, // Cache l'ancien onglet explore
+          href: null, //cache l'ancien onglet explore
         }}
       />
     </Tabs>
