@@ -1,8 +1,9 @@
+import { ConfirmModal } from '@/src/components/ConfirmModal';
 import { Badge, Card } from '@/src/components/ui';
 import { useDeleteTask, useUpdateTaskStatus } from '@/src/hooks';
 import type { Task, TaskStatus } from '@/src/types';
 import { BorderRadius, Colors, Spacing, Typography } from '@/src/utils/designSystem';
-import React from 'react';
+import React, { useState } from 'react';
 import {
    StyleSheet,
    Text,
@@ -17,6 +18,7 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
+   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
    const updateStatusMutation = useUpdateTaskStatus();
    const deleteTaskMutation = useDeleteTask();
 
@@ -42,16 +44,12 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
       updateStatusMutation.mutate({ id: task.id, status: newStatus });
    };
 
-   const handleDelete = () => {
+   const handleDeleteClick = () => {
+      setShowDeleteConfirm(true);
+   };
 
-      //confirmation via window.confirm pour web (temporaire pour test)
-      const isConfirmed = window.confirm(`Êtes-vous sûr de vouloir supprimer "${task.title}" ?`);
-
-      if (isConfirmed) {
-         deleteTaskMutation.mutate(task.id);
-      } else {
-         console.log('Suppression annulée');
-      }
+   const handleConfirmDelete = () => {
+      deleteTaskMutation.mutate(task.id);
    };
 
    const formatDate = (dateString: string | null | undefined): string => {
@@ -162,13 +160,26 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
 
                <TouchableOpacity
                   style={[styles.actionButton, styles.deleteButton]}
-                  onPress={handleDelete}
+                  onPress={handleDeleteClick}
                   disabled={deleteTaskMutation.isPending}
                >
                   <Text style={styles.deleteButtonText}>Supprimer</Text>
                </TouchableOpacity>
             </View>
          </View>
+
+         {/*confirmation Modal */}
+         <ConfirmModal
+            isVisible={showDeleteConfirm}
+            onClose={() => setShowDeleteConfirm(false)}
+            onConfirm={handleConfirmDelete}
+            title="Supprimer la tâche"
+            message={`Êtes-vous sûr de vouloir supprimer "${task.title}" ?`}
+            confirmText="Supprimer"
+            cancelText="Annuler"
+            confirmVariant="danger"
+            isLoading={deleteTaskMutation.isPending}
+         />
       </Card>
    );
 }

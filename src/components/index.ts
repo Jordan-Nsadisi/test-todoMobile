@@ -7,9 +7,9 @@ export { ThemedText } from './themed-text';
 export { ThemedView } from './themed-view';
 
 //business components
+export { ConfirmModal } from './ConfirmModal';
 export { TaskCard } from './TaskCard';
 export { TaskModal } from './TaskModal';
-
 //navigation components
 export { AuthGuard } from './AuthGuard';
 
