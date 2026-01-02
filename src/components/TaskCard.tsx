@@ -58,15 +58,26 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
       );
    };
 
-   const formatDate = (dateString: string) => {
-      const date = new Date(dateString);
-      return new Intl.DateTimeFormat('fr-FR', {
-         day: '2-digit',
-         month: '2-digit',
-         year: 'numeric',
-         hour: '2-digit',
-         minute: '2-digit',
-      }).format(date);
+   const formatDate = (dateString: string | null | undefined): string => {
+      if (!dateString) return 'Date non disponible';
+
+      try {
+         const date = new Date(dateString);
+
+         //vérifier si la date est valide
+         if (isNaN(date.getTime())) {
+            return 'Date invalide';
+         }
+
+         return new Intl.DateTimeFormat('fr-FR', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+         }).format(date);
+      } catch (error) {
+         console.error('Error formatting date:', error, dateString);
+         return 'Date invalide';
+      }
    };
 
    const truncateText = (text: string, maxLength: number = 100) => {
