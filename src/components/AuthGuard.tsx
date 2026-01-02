@@ -9,6 +9,7 @@ interface AuthGuardProps {
 }
 
 /**
+ * Composant de protection par affichage conditionnel - cache/affiche le contenu selon l'authentification
  * composant de protection d'authentification
  * affiche le contenu uniquement si l'utilisateur est authentifié
  */

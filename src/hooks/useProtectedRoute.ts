@@ -3,6 +3,7 @@ import { useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
 
 /**
+ * Hook de redirection automatique - surveille les routes et redirige selon l'état d'authentification
  * hook pour la protection automatique des routes
  * redirige automatiquement selon l'état d'authentification
  */
