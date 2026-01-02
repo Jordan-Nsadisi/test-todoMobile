@@ -6,6 +6,10 @@ export { default as ParallaxScrollView } from './parallax-scroll-view';
 export { ThemedText } from './themed-text';
 export { ThemedView } from './themed-view';
 
-// Business components
+//business components
 export { TaskCard } from './TaskCard';
 export { TaskModal } from './TaskModal';
+
+//navigation components
+export { AuthGuard } from './AuthGuard';
+
