@@ -4,11 +4,10 @@ import type { Task, TaskStatus } from '@/src/types';
 import { BorderRadius, Colors, Spacing, Typography } from '@/src/utils/designSystem';
 import React from 'react';
 import {
-   Alert,
    StyleSheet,
    Text,
    TouchableOpacity,
-   View,
+   View
 } from 'react-native';
 
 interface TaskCardProps {
@@ -44,18 +43,15 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
    };
 
    const handleDelete = () => {
-      Alert.alert(
-         'Supprimer la tâche',
-         `Êtes-vous sûr de vouloir supprimer "${task.title}" ?`,
-         [
-            { text: 'Annuler', style: 'cancel' },
-            {
-               text: 'Supprimer',
-               style: 'destructive',
-               onPress: () => deleteTaskMutation.mutate(task.id),
-            },
-         ]
-      );
+
+      //confirmation via window.confirm pour web (temporaire pour test)
+      const isConfirmed = window.confirm(`Êtes-vous sûr de vouloir supprimer "${task.title}" ?`);
+
+      if (isConfirmed) {
+         deleteTaskMutation.mutate(task.id);
+      } else {
+         console.log('Suppression annulée');
+      }
    };
 
    const formatDate = (dateString: string | null | undefined): string => {

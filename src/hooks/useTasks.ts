@@ -139,8 +139,12 @@ export const useDeleteTask = () => {
    const userTasksKey = queryKeys.tasks.detail(user?.id || 0);
 
    return useMutation({
-      mutationFn: taskService.deleteTask,
+      mutationFn: (taskId: number) => {
+         console.log('tentative de suppression de la tâche ID:', taskId);
+         return taskService.deleteTask(taskId);
+      },
       onMutate: async (taskId) => {
+         console.log('suppression optimiste de la tâche:', taskId);
          await queryClient.cancelQueries({ queryKey: userTasksKey });
 
          //values précédentes
@@ -154,6 +158,7 @@ export const useDeleteTask = () => {
          return { previousTasks };
       },
       onSuccess: (_, deletedTaskId) => {
+         console.log('tâche supprimée avec succès:', deletedTaskId);
          Toast.show({
             type: 'success',
             text1: 'Tâche supprimée',
@@ -161,6 +166,7 @@ export const useDeleteTask = () => {
          });
       },
       onError: (error: any, variables, context) => {
+         console.error('erreur de suppression:', error);
          //rollback
          if (context?.previousTasks) {
             queryClient.setQueryData(userTasksKey, context.previousTasks);
@@ -173,6 +179,7 @@ export const useDeleteTask = () => {
          });
       },
       onSettled: () => {
+         console.log('Invalidation du cache');
          queryClient.invalidateQueries({ queryKey: userTasksKey });
       },
    });
