@@ -9,12 +9,12 @@ import React, { useMemo, useState } from 'react';
 import {
   FlatList,
   RefreshControl,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type FilterType = 'ALL' | 'PENDING' | 'COMPLETED' | 'CANCELED';
 

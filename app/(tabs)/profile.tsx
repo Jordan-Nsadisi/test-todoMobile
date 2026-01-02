@@ -6,7 +6,8 @@ import { useLogout } from '@/src/hooks';
 import { useAuthStore } from '@/src/store';
 import { BorderRadius, Colors, Spacing, Typography } from '@/src/utils/designSystem';
 import React from 'react';
-import { Alert, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ProfileScreen() {
    const { user, clearAuth } = useAuthStore();
