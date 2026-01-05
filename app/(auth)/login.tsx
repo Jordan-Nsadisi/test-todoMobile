@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
    header: {
       alignItems: 'center',
       marginBottom: Spacing['4xl'],
+      gap: Spacing.xl,
    },
 
    title: {

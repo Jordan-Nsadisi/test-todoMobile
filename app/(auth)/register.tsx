@@ -244,6 +244,7 @@ const styles = StyleSheet.create({
    header: {
       alignItems: 'center',
       marginBottom: Spacing['3xl'],
+      gap: Spacing.xl,
    },
 
    title: {
