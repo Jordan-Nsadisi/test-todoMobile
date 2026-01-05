@@ -317,6 +317,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: Colors.background,
     fontWeight: Typography.fontWeight.bold,
+    lineHeight: 24,
+    textAlign: 'center',
   },
 });
 
