@@ -75,7 +75,7 @@ export default function RegisterScreen() {
                            },
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
-                           <View style={styles.nameInput}>
+                           <View style={styles.nameInputLine}>
                               <Input
                                  label="Prénom"
                                  placeholder="John"
@@ -101,7 +101,7 @@ export default function RegisterScreen() {
                            },
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
-                           <View style={styles.nameInput}>
+                           <View style={styles.nameInputLine}>
                               <Input
                                  label="Nom"
                                  placeholder="Doe"
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
 
    header: {
       alignItems: 'center',
-      marginBottom: Spacing['3xl'],
+      marginBottom: Spacing['4xl'],
       gap: Spacing.xl,
    },
 
@@ -267,10 +267,13 @@ const styles = StyleSheet.create({
 
    nameRow: {
       flexDirection: 'row',
+      justifyContent: 'space-between',
       gap: Spacing.md,
+      // maxWidth: '80%',
+
    },
 
-   nameInput: {
+   nameInputLine: {
       flex: 1,
    },
 
