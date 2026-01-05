@@ -218,6 +218,7 @@ const styles = StyleSheet.create({
   statsContainer: {
     marginTop: Spacing.sm,
     flexDirection: 'row',
+    justifyContent: 'center',
     gap: Spacing.md,
   },
 
