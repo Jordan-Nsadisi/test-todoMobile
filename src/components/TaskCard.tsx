@@ -74,11 +74,6 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
       }
    };
 
-   const truncateText = (text: string, maxLength: number = 100) => {
-      if (text.length <= maxLength) return text;
-      return text.substring(0, maxLength) + '...';
-   };
-
    return (
       <Card
          pressable={!!onPress}
@@ -89,7 +84,7 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
       >
          {/* header avec titre et staus */}
          <View style={styles.header}>
-            <Text style={styles.title} numberOfLines={2}>
+            <Text style={styles.title} numberOfLines={3}>
                {task.title}
             </Text>
             <Badge variant={statusConfig[task.status].variant} size="sm">
@@ -99,8 +94,8 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
 
          {/* description */}
          {task.description && (
-            <Text style={styles.description} numberOfLines={3}>
-               {truncateText(task.description)}
+            <Text style={styles.description} numberOfLines={4}>
+               {task.description}
             </Text>
          )}
 
@@ -202,13 +197,13 @@ const styles = StyleSheet.create({
       fontWeight: Typography.fontWeight.semibold,
       color: Colors.text,
       marginRight: Spacing.sm,
-      lineHeight: Typography.lineHeight.tight,
+      lineHeight: 24,
    },
 
    description: {
       fontSize: Typography.fontSize.base,
       color: Colors.textSecondary,
-      lineHeight: Typography.lineHeight.normal,
+      lineHeight: 22,
       marginBottom: Spacing.md,
    },
 
