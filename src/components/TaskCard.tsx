@@ -3,6 +3,7 @@ import { Badge, Card } from '@/src/components/ui';
 import { useDeleteTask, useUpdateTaskStatus } from '@/src/hooks';
 import type { Task, TaskStatus } from '@/src/types';
 import { BorderRadius, Colors, Spacing, Typography } from '@/src/utils/designSystem';
+import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
    StyleSheet,
@@ -120,7 +121,7 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
                      onPress={() => handleStatusChange('COMPLETED')}
                      disabled={updateStatusMutation.isPending}
                   >
-                     <Text style={styles.completeButtonText}>✓ Terminer</Text>
+                     <Ionicons name="checkmark-circle" size={20} color={Colors.success} />
                   </TouchableOpacity>
                )}
 
@@ -130,7 +131,7 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
                      onPress={() => handleStatusChange('CANCELED')}
                      disabled={updateStatusMutation.isPending}
                   >
-                     <Text style={styles.cancelButtonText}>✕ Annuler</Text>
+                     <Ionicons name="close-circle" size={20} color={Colors.error} />
                   </TouchableOpacity>
                )}
 
@@ -140,7 +141,7 @@ export function TaskCard({ task, onEdit, onPress }: TaskCardProps) {
                      onPress={() => handleStatusChange('PENDING')}
                      disabled={updateStatusMutation.isPending}
                   >
-                     <Text style={styles.pendingButtonText}>↻ En attente</Text>
+                     <Ionicons name="reload-circle" size={20} color={Colors.warning} />
                   </TouchableOpacity>
                )}
             </View>
@@ -233,11 +234,13 @@ const styles = StyleSheet.create({
    },
 
    actionButton: {
-      paddingHorizontal: Spacing.md,
+      paddingHorizontal: Spacing.sm,
       paddingVertical: Spacing.sm,
       borderRadius: BorderRadius.md,
-      minWidth: 80,
+      minWidth: 40,
+      minHeight: 40,
       alignItems: 'center',
+      justifyContent: 'center',
    },
 
    completeButton: {
