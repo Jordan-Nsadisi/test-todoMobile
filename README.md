@@ -1,50 +1,61 @@
-# Welcome to your Expo app 👋
+# TodoApp Mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Application mobile de gestion de tâches développée avec React Native et Expo, connectée à une API Laravel.
 
-## Get started
+## Prérequis
 
-1. Install dependencies
+- **Node.js** (v18 ou supérieur)
+- **npm** ou **yarn**
+- **Backend Laravel** démarré et accessible
+- **Expo Go** (pour tester sur mobile) ou émulateur Android/iOS
 
+## Installation
+
+1. **Cloner le projet**
+   ```bash
+   cd test-todoMobile
+   ```
+
+2. **Installer les dépendances**
    ```bash
    npm install
    ```
 
-2. Start the app
-
-   ```bash
-   npx expo start
+3. **Configurer l'API**
+   
+   Modifier l'URL de l'API dans `src/services/api.ts` :
+   ```typescript
+   const API_BASE_URL = 'http://votre-ip:8000/api';
    ```
 
-In the output, you'll find options to open the app in a
+## Lancement
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### Démarrer le serveur de développement
 ```bash
-npm run reset-project
+npm start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Lancer sur une plateforme spécifique
+```bash
+# Web
+npm run web
 
-## Learn more
+# Android
+npm run android
 
-To learn more about developing your project with Expo, look at the following resources:
+# iOS
+npm run ios
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Technologies
 
-## Join the community
+- **React Native** avec **Expo Router** (navigation file-based)
+- **TypeScript** (typage strict)
+- **Zustand** (gestion d'état authentification)
+- **TanStack Query** (gestion des données serveur)
+- **React Hook Form** (gestion des formulaires)
+- **Axios** (client HTTP)
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Développé avec ❤️ par Jordan Nsadisi
