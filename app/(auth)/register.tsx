@@ -267,14 +267,12 @@ const styles = StyleSheet.create({
 
    nameRow: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      gap: Spacing.md,
-      // maxWidth: '80%',
-
+      marginHorizontal: -Spacing.sm,
    },
 
    nameInputLine: {
       flex: 1,
+      paddingHorizontal: Spacing.sm,
    },
 
    registerButton: {
