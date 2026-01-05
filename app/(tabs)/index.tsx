@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: Spacing.xl,
-    gap: Spacing.md,
+    gap: Spacing['2xl'],
   },
 
   emptyStateTitle: {
