@@ -134,8 +134,12 @@ export default function DashboardScreen() {
         {stats.total > 0 && (
           <View style={styles.statsContainer}>
             <Text style={styles.statsText}>
-              {stats.total} tâche{stats.total > 1 ? 's' : ''} •
-              {stats.pending} en attente •
+              {stats.total} tâche{stats.total > 1 ? 's' : ''}
+            </Text>
+            <Text style={styles.statsText}>
+              {stats.pending} en attente
+            </Text>
+            <Text style={styles.statsText}>
               {stats.completed} terminée{stats.completed > 1 ? 's' : ''}
             </Text>
           </View>
@@ -213,6 +217,8 @@ const styles = StyleSheet.create({
 
   statsContainer: {
     marginTop: Spacing.sm,
+    flexDirection: 'row',
+    gap: Spacing.md,
   },
 
   statsText: {
